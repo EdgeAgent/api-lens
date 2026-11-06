@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>API Lens — Demo Page</title>
+  <style>
+    body { font-family: system-ui, sans-serif; background: #0a1a2b; color: #eaf3f8; margin: 2rem; }
+    button { margin: 4px; padding: 8px 14px; border-radius: 8px; border: 1px solid #2dd4bf; background: #102a42; color: #eaf3f8; cursor: pointer; }
+    button:hover { background: #2dd4bf; color: #06281f; }
+    pre { background: #071523; padding: 10px; border-radius: 8px; max-height: 300px; overflow: auto; }
+    .hint { color: #9db4c4; max-width: 640px; }
+  </style>
+</head>
+<body>
+  <h1>🔭 API Lens demo</h1>
+  <p class="hint">
+    1) Start this server (<code>python3 server.py</code>) and open this page.<br />
+    2) Click the API Lens toolbar icon and press <b>● Record this tab</b> (badge turns red and counts up).<br />
+    3) Click the buttons below — each fires a real API call.<br />
+    4) Open the workbench: calls are grouped into endpoints with inferred schemas.
+    Export an OpenAPI spec or a typed client and check the login demo: the password is redacted in exports by default.
+  </p>
+  <div>
+    <button onclick="getUser()">GET /api/users/42 (fetch)</button>
+    <button onclick="getUserFull()">GET /api/users/7?full=true (fetch)</button>
+    <button onclick="search()">GET /api/search?q=lens&amp;page=2 (XHR)</button>
+    <button onclick="order()">POST /api/orders (fetch)</button>
+    <button onclick="login()">POST /api/login (fetch — watch redaction)</button>
+    <button onclick="missing()">GET /api/users/99 → 404</button>
+    <button onclick="fireAll()">🔥 Fire all</button>
+  </div>
+  <pre id="out">Responses will print here…</pre>
+  <script>
+    const out = document.getElementById("out");
+    function show(label, data) {
+      out.textContent = label + "\n" + JSON.stringify(data, null, 2) + "\n\n" + out.textContent;
+    }
+    async function getUser() {
+      const r = await fetch("/api/users/42");
+      show("GET /api/users/42 → " + r.status, await r.json());
+    }
+    async function getUserFull() {
+      const r = await fetch("/api/users/7?full=true");
+      show("GET /api/users/7?full=true → " + r.status, await r.json());
+    }
+    function search() {
+      const xhr = new XMLHttpRequest();
+      xhr.open("GET", "/api/search?q=lens&page=2");
+      xhr.onload = () => show("GET /api/search (XHR) → " + xhr.status, JSON.parse(xhr.responseText));
+      xhr.send();
+    }
+    async function order() {
+      const r = await fetch("/api/orders", {
+        method: "POST",
+        headers: { "Content-Type": "application/json", "Authorization": "Bearer demo-token-123" },
+        body: JSON.stringify({ item: "lens", qty: 2, gift: false }),
+      });
+      show("POST /api/orders → " + r.status, await r.json());
+    }
+    async function login() {
+      const r = await fetch("/api/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ user: "kevin", password: "demo-password" }),
+      });
+      show("POST /api/login → " + r.status, await r.json());
+    }
+    async function missing() {
+      const r = await fetch("/api/users/99");
+      show("GET /api/users/99 → " + r.status, await r.json());
+    }
+    async function fireAll() {
+      await getUser(); await getUserFull(); search(); await order(); await login(); await missing();
+    }
+  </script>
+</body>
+</html>

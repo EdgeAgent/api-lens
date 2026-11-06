@@ -1,0 +1,61 @@
+{
+  "action": {
+    "default_icon": {
+      "128": "icons/icon128.png",
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png"
+    },
+    "default_popup": "src/popup.html",
+    "default_title": "API Lens"
+  },
+  "author": "EdgeAgent",
+  "background": {
+    "service_worker": "src/background.js"
+  },
+  "content_scripts": [
+    {
+      "all_frames": true,
+      "js": [
+        "src/inject.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_start",
+      "world": "MAIN"
+    },
+    {
+      "all_frames": true,
+      "js": [
+        "src/bridge.js"
+      ],
+      "match_about_blank": true,
+      "matches": [
+        "<all_urls>"
+      ],
+      "run_at": "document_start"
+    }
+  ],
+  "description": "Record a site's API calls, group them into endpoints, and export OpenAPI + typed clients in TS, JS, Python & Go. Local-first.",
+  "icons": {
+    "128": "icons/icon128.png",
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png"
+  },
+  "manifest_version": 3,
+  "minimum_chrome_version": "116",
+  "name": "API Lens — Reverse API Engineer",
+  "permissions": [
+    "storage",
+    "tabs",
+    "sidePanel"
+  ],
+  "short_name": "API Lens",
+  "side_panel": {
+    "default_path": "src/sidepanel.html"
+  },
+  "version": "1.1.0"
+}

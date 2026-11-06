@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1280" height="360" viewBox="0 0 1280 360" role="img" aria-label="API Lens — Reverse API Engineer for Chrome">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a2138"/>
+      <stop offset="0.55" stop-color="#081726"/>
+      <stop offset="1" stop-color="#061120"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#ffd97a"/>
+      <stop offset="1" stop-color="#f5b93f"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="0" y="0" width="1280" height="360" fill="url(#bg)"/>
+  <rect x="6" y="6" width="1268" height="348" rx="26" fill="none" stroke="#2dd3be" stroke-opacity="0.55" stroke-width="3"/>
+
+  <!-- magnifier motif (echoes the extension icon): teal ring, gold node graph inside, gold handle, red recording dot -->
+  <g transform="translate(215,180)">
+    <rect x="-105" y="-105" width="210" height="210" rx="36" fill="#081726" stroke="#2dd3be" stroke-width="5"/>
+    <circle cx="-8" cy="-12" r="52" fill="none" stroke="#2dd3be" stroke-width="9"/>
+    <line x1="30" y1="26" x2="66" y2="62" stroke="url(#gold)" stroke-width="13" stroke-linecap="round"/>
+    <!-- node graph inside the lens -->
+    <line x1="-34" y1="-30" x2="-6" y2="-6" stroke="#f5b93f" stroke-width="3.5"/>
+    <line x1="-6" y1="-6" x2="16" y2="-34" stroke="#f5b93f" stroke-width="3.5"/>
+    <line x1="-6" y1="-6" x2="-2" y2="22" stroke="#f5b93f" stroke-width="3.5"/>
+    <circle cx="-34" cy="-30" r="6.5" fill="#f5b93f"/>
+    <circle cx="16" cy="-34" r="6.5" fill="#f5b93f"/>
+    <circle cx="-2" cy="22" r="6.5" fill="#f5b93f"/>
+    <circle cx="-6" cy="-6" r="8" fill="#ffd97a"/>
+    <!-- recording dot -->
+    <circle cx="72" cy="-72" r="10" fill="#ff5252"/>
+  </g>
+
+  <!-- title block -->
+  <text x="380" y="158" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="84" font-weight="700" fill="#ffffff">API <tspan fill="url(#gold)">Lens</tspan></text>
+  <text x="382" y="212" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="34" fill="#2dd3be">Reverse API Engineer for Chrome</text>
+  <text x="382" y="262" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="24" fill="#9fb6c9">Record a site's API calls → endpoints → OpenAPI + typed clients</text>
+  <text x="382" y="300" font-family="'Segoe UI',Helvetica,Arial,sans-serif" font-size="20" fill="#5f7a90">Local-first · secrets redacted by default · nothing leaves your browser</text>
+</svg>

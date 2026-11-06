@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>API Lens — Privacy Policy</title>
+</head>
+<body>
+<h1>API Lens — Privacy Policy</h1>
+<p><em>Last updated: November 6, 2026</em></p>
+
+<p>API Lens is a Chrome extension published by Edge Agency ("we", "us"). This policy explains what data the extension handles and what it does not.</p>
+
+<h2>The short version</h2>
+<p>API Lens has no servers, no analytics, and no user accounts. Everything it records stays in your own browser, on your own machine. We never receive, see, or store your data.</p>
+
+<h2>What the extension records</h2>
+<p>Recording is off by default and is per-tab. Only when you press the Record button on a specific tab does API Lens capture that tab's network activity: request and response URLs, methods, headers, bodies, status codes, and timing for fetch, XMLHttpRequest, and sendBeacon calls made by that page — the same information visible in Chrome DevTools' Network panel.</p>
+<p>Captured data is processed locally to group calls into endpoint templates, infer schemas, and generate exports (OpenAPI specs, typed client code, HAR files). Sessions you choose to save are stored in Chrome's local extension storage (<code>chrome.storage.local</code>) on your device only.</p>
+
+<h2>What leaves your device</h2>
+<p>By default: nothing. The extension makes no network calls of its own.</p>
+<p>The single exception is the optional "AI enhance" feature. If — and only if — you enter your own OpenRouter API key and explicitly run AI enhance, the extension sends endpoint <em>shapes</em> to OpenRouter: endpoint names, field names and types, and counts. It never sends credential values, authorization headers, cookies, or request/response body values. Your OpenRouter key is stored only in your browser and is used only for calls you initiate.</p>
+
+<h2>Secrets and redaction</h2>
+<p>Exports redact secrets by default: Authorization headers, cookies, API-key headers, and password/token fields are replaced with a redaction marker. Raw values appear in an export only if you deliberately enable the "include secrets in exports" option.</p>
+
+<h2>What we do not do</h2>
+<ul>
+<li>We do not collect, transmit, sell, or share your data with any third party.</li>
+<li>We do not use your data for advertising, marketing, or credit purposes.</li>
+<li>We do not track your browsing history. Tabs you have not chosen to record are never captured.</li>
+<li>We do not operate any server that receives data from the extension.</li>
+</ul>
+
+<h2>Your control</h2>
+<p>You can stop recording at any time, delete saved sessions from within the extension, and remove all locally stored data by uninstalling the extension or clearing its storage in Chrome settings.</p>
+
+<h2>Changes to this policy</h2>
+<p>If this policy changes, the updated version will be posted at this URL with a new "last updated" date.</p>
+
+<h2>Contact</h2>
+<p>Questions: hello@agencylead.ca</p>
+</body>
+</html>
