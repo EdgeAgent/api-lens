@@ -147,7 +147,7 @@ function renderDetail(ep, entries) {
     h("div", { class: "row" },
       h("span", { class: `method ${ep.method}` }, ep.method),
       h("span", { style: "font-family:var(--mono)" }, ep.origin + ep.template)),
-    ep.fnName ? h("div", { class: "stats" }, `ƒ ${ep.fnName}${ep.description ? " — " + ep.description : ""}`) : null,
+    ...(ep.fnName ? [h("div", { class: "stats" }, `ƒ ${ep.fnName}${ep.description ? " — " + ep.description : ""}`)] : []),
     h("div", { class: "stats" },
       `${ep.callCount} calls · first ${fmtClock(ep.firstSeen)} · last ${fmtClock(ep.lastSeen)}`,
       ep.auth ? ` · auth: ${ep.auth.type} (${ep.auth.header})` : " · no auth header observed",
